@@ -58,7 +58,7 @@ function listUsers() {
         <h5>Lista de usuários</h5>
         <TableContainer component={Paper} style={{margin:"2px"}}>
           <Table size="small">
-            <TableHead style={{backgroundColor: "lightblue", borderStyle:"solid"}}>
+            <TableHead style={{backgroundColor: "lightskyblue", borderStyle:"solid"}}>
               <TableRow>
                 <TableCell align="center">
                   Nome
@@ -74,13 +74,13 @@ function listUsers() {
             <TableBody>{listUsers}</TableBody>
           </Table>
         </TableContainer>
-      <Button 
+      <Button
       fullWidth
       variant='contained'
       onClick={logout}
       >
         SAIR
-      </Button>
+      </ Button>
       </div>
       )}
     </div>
