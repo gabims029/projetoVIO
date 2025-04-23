@@ -16,7 +16,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function listEventos() {
-  const [eventos,setEventos] = useState([]);
+  const [events,setEventos] = useState([]);
   const [alert, setAlert] = useState({
     //Visibilidade (false = oculta; true = visível )
     open: false,
@@ -67,12 +67,13 @@ function listEventos() {
   const listEventos = events.map((evento)=>{
     return(
       <TableRow key={evento.id_evento}>
-        <TableCell align="center">{evento.name}</TableCell>
-        <TableCell align="center">{evento.email}</TableCell>
-        <TableCell align="center">{evento.cpf}</TableCell>
+        <TableCell align="center">{evento.nome}</TableCell>
+        <TableCell align="center">{evento.descricao}</TableCell>
+        <TableCell align="center">{evento.data_hora}</TableCell>
+        <TableCell align="center">{evento.local}</TableCell>
 
         <TableCell align="center">
-          <IconButton onClick={() => deleteUser(evento.id)}>
+          <IconButton onClick={() => deleteEventos(evento.id)}>
             <DeleteOutlineIcon color="error"/>
           </IconButton>
         </TableCell>
@@ -91,7 +92,7 @@ function listEventos() {
     // if(!localStorage.getItem("authenticated")){
     //   navigate("/")
     // }
-    getUsers();
+    getEventos();
   },[]);
 
 
@@ -106,9 +107,9 @@ function listEventos() {
         </Alert>
 
       </Snackbar>
-      {users.length === 0 ?(<h1>Carregando usuários</h1>): (
+      {events.length === 0 ?(<h1>Carregando eventos</h1>): (
       <div>
-        <h5>Lista de usuários</h5>
+        <h5>Lista de Eventos</h5>
         <TableContainer component={Paper} style={{margin:"2px"}}>
           <Table size="small">
             <TableHead style={{backgroundColor: "lightskyblue", borderStyle:"solid"}}>
@@ -117,17 +118,20 @@ function listEventos() {
                   Nome
                 </TableCell>
                 <TableCell align="center">
-                  Email
+                  Descrição
                 </TableCell>
                 <TableCell align="center">
-                  CPF
+                  Data hora
+                </TableCell>
+                <TableCell align="center">
+                  Local
                 </TableCell>
                 <TableCell align="center">
                   Ações
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>{listUsers}</TableBody>
+            <TableBody>{listEventos}</TableBody>
           </Table>
         </TableContainer>
       <Button
@@ -142,4 +146,4 @@ function listEventos() {
     </div>
   )
 }
-export default listUsers
+export default listEventos
