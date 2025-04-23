@@ -32,7 +32,7 @@ function Login() {
       (response)=>{
         alert(response.data.message) 
         localStorage.setItem('authenticated',true)
-        navigate("evento/")
+        navigate("users/")
       },
     (error)=>{
       console.log(error)
