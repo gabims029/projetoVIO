@@ -14,6 +14,7 @@ import { Button, IconButton, Alert, Snackbar } from '@mui/material';
 import { Link , useNavigate } from 'react-router-dom';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModalCriarIngresso from '../components/ModalCriarIngresso';
 
 function listEventos() {
   const [events,setEventos] = useState([]);
@@ -77,6 +78,11 @@ function listEventos() {
             <DeleteOutlineIcon color="error"/>
           </IconButton>
         </TableCell>
+        <TableCell align="center">
+          <IconButton onClick={() => abrirModalIngresso(evento)}>
+            Adicionar 
+          </IconButton>
+        </TableCell>
 
 
       </TableRow>
@@ -88,12 +94,20 @@ function listEventos() {
     navigate("/")
   }
 
-  useEffect(()=>{
-    // if(!localStorage.getItem("authenticated")){
-    //   navigate("/")
-    // }
-    getEventos();
-  },[]);
+  useEffect(()=>{getEventos();},[]);
+
+const [eventoSelecionado, setEventoSelecionado] = useState("");
+const [modalOpen, setModalOpen] = useState(false);
+
+const abrirModalIngresso = (evento) => {
+  setEventoSelecionado(evento);
+  setModalOpen(true);
+};
+
+const fecharModalIngresso = () => {
+  setModalOpen(false);
+  setEventoSelecionado("");
+};
 
 
   return (
@@ -107,6 +121,13 @@ function listEventos() {
         </Alert>
 
       </Snackbar>
+
+      <ModalCriarIngresso
+  open={modalOpen}
+  onClose={fecharModalIngresso}
+  eventoSelecionado={eventoSelecionado}
+/>
+
       {events.length === 0 ?(<h1>Carregando eventos</h1>): (
       <div>
         <h5>Lista de Eventos</h5>
@@ -127,7 +148,10 @@ function listEventos() {
                   Local
                 </TableCell>
                 <TableCell align="center">
-                  Ações
+                  Excluir
+                </TableCell>
+                <TableCell align="center">
+                  Criar ingresso
                 </TableCell>
               </TableRow>
             </TableHead>
