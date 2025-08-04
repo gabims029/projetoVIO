@@ -5,6 +5,7 @@ import ListEventos from "./pages/listEventos";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CreateEvent from "./pages/CreateEvent";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/users" element={<ProtectedRoute><ListUsers/></ProtectedRoute>}/>
           <Route path="/evento" element={<ProtectedRoute><ListEventos/></ProtectedRoute>}/>
+          <Route path="/CreateEvent" element={<ProtectedRoute><CreateEvent/></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
     </div>
