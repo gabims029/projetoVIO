@@ -72,6 +72,14 @@ function listEventos() {
         <TableCell align="center">{evento.descricao}</TableCell>
         <TableCell align="center">{evento.data_hora}</TableCell>
         <TableCell align="center">{evento.local}</TableCell>
+        <TableCell align="center">{evento.fk_id_organizador}</TableCell>
+        <TableCell>
+          <img 
+          src={`http://localhost:5000/api/v1/evento/imagem/${evento.id_evento}`}
+          alt="Imagem do evento"
+          style={{width:"80px", height:"80px", objectFit:"cover"}}
+          />
+        </TableCell>
 
         <TableCell align="center">
           <IconButton onClick={() => deleteEventos(evento.id)}>
@@ -146,6 +154,12 @@ const fecharModalIngresso = () => {
                 </TableCell>
                 <TableCell align="center">
                   Local
+                </TableCell>
+                <TableCell align="center">
+                  Id Organizador
+                </TableCell>
+                <TableCell align="center">
+                  Imagem
                 </TableCell>
                 <TableCell align="center">
                   Excluir

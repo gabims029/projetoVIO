@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/users" element={<ProtectedRoute><ListUsers/></ProtectedRoute>}/>
-          <Route path="/evento" element={<ProtectedRoute><ListEventos/></ProtectedRoute>}/>
+          <Route path="/events" element={<ProtectedRoute><ListEventos/></ProtectedRoute>}/>
           <Route path="/CreateEvent" element={<ProtectedRoute><CreateEvent/></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
